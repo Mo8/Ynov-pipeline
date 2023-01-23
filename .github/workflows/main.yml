@@ -49,9 +49,9 @@ jobs:
       - name: Badge
         run: coverage-badge -o cov.svg -f
       - uses: EndBug/add-and-commit@v9
-          with:
-            default_author: github_actions
-            add: ./cov.svg
+        with:
+          default_author: github_actions
+          add: ./cov.svg
   deployment:
     needs: test
     runs-on: ubuntu-latest
