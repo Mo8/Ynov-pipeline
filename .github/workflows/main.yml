@@ -27,7 +27,7 @@ jobs:
         run: |
           black . --check
   test:
-    need: lint
+    needs: lint
     runs-on: ubuntu-latest
 
     strategy:
@@ -47,7 +47,7 @@ jobs:
       - name: Test pytest
         run: pytest
   deployment:
-    need: test
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
