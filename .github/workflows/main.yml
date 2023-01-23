@@ -46,10 +46,8 @@ jobs:
           pip install pytest bottle pytest-cov
       - name: Test pytest
         run: pytest --cov=. . | tee pytest-coverage.txt
-      - name: Pytest coverage comment
-        uses: MishaKav/pytest-coverage-comment@main
-        with:
-          pytest-coverage-path: ./pytest-coverage.txt
+      - name: Coverage Badge
+          uses: tj-actions/coverage-badge-py@v1.8
   deployment:
     needs: test
     runs-on: ubuntu-latest
