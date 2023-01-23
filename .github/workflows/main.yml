@@ -43,7 +43,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest bottle
+          pip install pytest bottle pytest-cov
       - name: Test pytest
         run: pytest --cov . --cov-report html:cov-html
       - name: Pytest coverage comment
