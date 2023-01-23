@@ -3,7 +3,7 @@ name: Python package
 on: [ push,workflow_dispatch ]
 
 jobs:
-  build:
+  lint:
 
     runs-on: ubuntu-latest
 
@@ -27,6 +27,7 @@ jobs:
         run: |
           black . --check
   test:
+    need: lint
     runs-on: ubuntu-latest
 
     strategy:
@@ -46,6 +47,7 @@ jobs:
       - name: Test pytest
         run: pytest
   deployment:
+    need: test
     runs-on: ubuntu-latest
 
     steps:
