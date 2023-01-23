@@ -45,13 +45,20 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest bottle pytest-cov coverage-badge
       - name: Test pytest
-        run: pytest --cov=. . | tee pytest-coverage.txt
-      - name: Badge
-        run: coverage-badge -o cov.svg -f
-      - uses: EndBug/add-and-commit@v9
-        with:
-          default_author: github_actions
-          add: ./cov.svg
+        run: pytest
+  coverage:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test pytest
+          run: pytest --cov=. . | tee pytest-coverage.txt
+            - name: Badge
+              run: coverage-badge -o cov.svg -f
+            - uses: EndBug/add-and-commit@v9
+              with:
+                default_author: github_actions
+                add: ./cov.svg
+
   deployment:
     needs: test
     runs-on: ubuntu-latest
