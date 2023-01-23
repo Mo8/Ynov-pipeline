@@ -68,4 +68,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: notif
-        run: echo "envoie slack"
+        run: echo ${{job.status}}
