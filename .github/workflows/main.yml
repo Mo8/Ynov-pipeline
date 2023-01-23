@@ -45,7 +45,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest bottle
       - name: Test pytest
-        run: pytest
+        run: pytest --cov . --cov-report html:cov-html
+      - name: Pytest coverage comment
+        uses: MishaKav/pytest-coverage-comment@main
+        with:
+          pytest-coverage-path: ./cov-html
   deployment:
     needs: test
     runs-on: ubuntu-latest
