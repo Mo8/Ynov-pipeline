@@ -65,5 +65,8 @@ jobs:
   notification:
     if: success() || failure()
     needs: build
+
+      runs-on: ubuntu-latest
     steps:
-      run: echo "envoie slack"
+      - name: notif
+        run: echo "envoie slack"
