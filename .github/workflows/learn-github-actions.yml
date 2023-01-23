@@ -29,3 +29,5 @@ jobs:
       - name: Lint with black
         run: |
           black .
+      - name: Test pytest
+        run: pytest
