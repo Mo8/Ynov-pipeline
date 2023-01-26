@@ -79,30 +79,3 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
 
-
-
-
-  deployment:
-    needs: test
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: echo mep
-        run: echo "MEP"
-      - uses: actions/checkout@v3
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-      - name: Test if website is up 🚀
-        run: |
-          pip install requests
-          python -c "import requests; exit(1) if requests.get('https://www.google.fr').status_code != 200 else exit(0)"
-  notification:
-    if: success() || failure()
-    needs: deployment
-
-    runs-on: ubuntu-latest
-    steps:
-      - name: notif
-        run: echo ${{job.status}}
