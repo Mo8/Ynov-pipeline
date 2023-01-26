@@ -67,12 +67,7 @@ jobs:
       - name: Test pytest + coverage
         run: pytest --cov=. . --cov-report html:cov-html
       - name: Badge
-        run: coverage-badge -o cov.svg -f
-      - uses: EndBug/add-and-commit@v9
-        with:
-          default_author: github_actions
-          add: ./cov.svg
-
+        run: coverage-badge -o ./cov-html/cov.svg -f
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
