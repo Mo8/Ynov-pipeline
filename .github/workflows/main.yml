@@ -32,7 +32,7 @@ jobs:
         run: |
           black . --check
   test:
-    if: ${{ !startsWith(github.head_ref,'hotfix') }}
+    if: ${{ !startsWith(github.ref_name,'hotfix') }}
     needs: lint
     runs-on: ubuntu-latest
 
