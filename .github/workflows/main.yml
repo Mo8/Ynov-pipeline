@@ -65,12 +65,13 @@ jobs:
         with:
           default_author: github_actions
           add: ./cov.svg
+      - name: Badge
+        run: coverage-badge -o cov.svg -f
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: cov-html
-      - name: Badge
-        run: coverage-badge -o cov.svg -f
+
 
 
 
